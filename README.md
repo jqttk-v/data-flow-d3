@@ -244,5 +244,149 @@ Das System kann mit externen Systemen integriert werden über:
 - **XML-Datenimport**: Strukturierter Datenimport aus externen Systemen oder Datenbanken
 - **Authentifizierungsschicht**: Unterstützung für Standard-Authentifizierungsmethoden
 
+_______________________________________________________________________________________________________________________________________________________________
 
+# Anleitung: Starten des Datenfluss-Dashboards (Backend und Frontend)
+
+Diese Anleitung führt Sie durch alle Schritte, um das Datenfluss-Dashboard lokal zu starten. Wir beginnen mit dem Einrichten und Aktivieren der virtuellen Python-Umgebung, installieren die erforderlichen Abhängigkeiten und starten dann sowohl das Backend als auch das Frontend.
+
+## Backend starten (FastAPI)
+
+### 1. Virtuelle Python-Umgebung einrichten
+
+Die virtuelle Umgebung isoliert die Projektabhängigkeiten von Ihrer globalen Python-Installation. Öffnen Sie die Kommandozeile (cmd) oder PowerShell und navigieren Sie zum Backend-Ordner:
+
+```bash
+cd pfad/zum/projekt/backend
+```
+
+Wenn Sie noch keine virtuelle Umgebung haben, erstellen Sie eine:
+
+```bash
+# Erstellen einer neuen virtuellen Umgebung
+python -m venv venv
+```
+
+### 2. Virtuelle Umgebung aktivieren
+
+In Windows aktivieren Sie die virtuelle Umgebung mit:
+
+```bash
+# In der normalen Kommandozeile (cmd)
+venv\Scripts\activate.bat
+
+# In PowerShell
+venv\Scripts\Activate.ps1
+```
+
+Wenn die Aktivierung erfolgreich war, sehen Sie den Namen der virtuellen Umgebung `(venv)` am Anfang Ihrer Kommandozeile.
+
+### 3. Abhängigkeiten installieren
+
+Installieren Sie alle in der requirements.txt definierten Abhängigkeiten:
+
+```bash
+pip install -r requirements.txt
+```
+
+Falls Sie Probleme beim Installieren einzelner Pakete haben, können Sie diese auch manuell installieren:
+
+```bash
+pip install fastapi uvicorn python-multipart rapidfuzz
+```
+
+### 4. Backend-Server starten
+
+Starten Sie den FastAPI-Server mit Uvicorn:
+
+```bash
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Erklärung der Parameter:
+- `main:app` - Verweist auf die `app`-Variable in der `main.py`-Datei
+- `--reload` - Automatisches Neuladen des Servers bei Codeänderungen (für Entwicklung)
+- `--host 0.0.0.0` - Macht den Server über alle Netzwerkschnittstellen erreichbar
+- `--port 8000` - Legt den Port fest, auf dem der Server läuft
+
+Sie sollten nun eine Ausgabe ähnlich dieser sehen:
+```
+INFO:     Started server process [12345]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+```
+
+Der FastAPI-Server ist jetzt unter `http://localhost:8000` erreichbar. Die API-Dokumentation finden Sie unter `http://localhost:8000/docs`.
+
+## Frontend starten (React)
+
+Öffnen Sie eine neue Kommandozeile oder PowerShell (lassen Sie die Backend-Server-Instanz laufen) und navigieren Sie zum Frontend-Ordner:
+
+### 1. Frontend-Ordner öffnen
+
+```bash
+cd pfad/zum/projekt/frontend/datenfluss-dashboard
+```
+
+### 2. Node.js-Abhängigkeiten installieren (falls nicht bereits geschehen)
+
+```bash
+npm install
+```
+
+Dies installiert alle im `package.json` definierten Abhängigkeiten, einschließlich React, D3.js und aller anderen benötigten Pakete.
+
+### 3. Entwicklungsserver starten
+
+```bash
+npm start
+```
+
+Dies startet den React-Entwicklungsserver, der automatisch einen Browser öffnet und zur Adresse `http://localhost:3000` navigiert. Der React-Server bietet Hot-Reloading, sodass Änderungen am Code sofort im Browser sichtbar werden.
+
+## Gleichzeitiges Betreiben von Backend und Frontend
+
+Für die volle Funktionalität des Datenfluss-Dashboards müssen sowohl Backend als auch Frontend gleichzeitig laufen:
+
+1. Das Backend läuft auf `http://localhost:8000`
+2. Das Frontend läuft auf `http://localhost:3000`
+
+Halten Sie beide Kommandozeilenfenster geöffnet und aktiv. Sie können beide Dienste beenden, indem Sie in der jeweiligen Kommandozeile `Ctrl+C` drücken.
+
+## Häufige Probleme und Lösungen
+
+### Problem: "No module named 'fastapi'" oder ähnliche Modul-Fehler
+
+**Lösung**: Stellen Sie sicher, dass die virtuelle Umgebung aktiviert ist (`(venv)` sollte am Anfang der Kommandozeile stehen) und installieren Sie die Abhängigkeiten erneut:
+```bash
+pip install -r requirements.txt
+```
+
+### Problem: Backend-Server startet nicht wegen Port-Belegung
+
+**Lösung**: Ändern Sie den Port in einem der Kommandos:
+```bash
+uvicorn main:app --reload --port 8001
+```
+
+### Problem: Frontend kann keine Verbindung zum Backend herstellen
+
+**Lösung**: Prüfen Sie, ob das Backend läuft und ob die API-URL in der Datei `frontend/src/api.js` korrekt konfiguriert ist. Sie sollte auf `http://localhost:8000/api` oder den von Ihnen gewählten Port verweisen.
+
+### Problem: "datenfluesse.xml nicht gefunden"
+
+**Lösung**: Stellen Sie sicher, dass die XML-Datei im Backend-Verzeichnis vorhanden ist und den korrekten Namen hat. Der Pfad ist relativ zum Verzeichnis, von dem aus der Backend-Server gestartet wurde.
+
+## Überprüfen der Funktionalität
+
+Um zu prüfen, ob alles korrekt läuft:
+
+1. Öffnen Sie `http://localhost:3000` im Browser und überprüfen Sie, ob das Dashboard angezeigt wird
+2. Führen Sie eine einfache Suche durch, um zu testen, ob das Frontend mit dem Backend kommunizieren kann
+3. Überprüfen Sie die API-Dokumentation unter `http://localhost:8000/docs`, um die verfügbaren Endpunkte zu sehen
+
+---
+
+Mit dieser Anleitung sollten Sie das Datenfluss-Dashboard erfolgreich lokal zum Laufen bringen können. Bei weiteren Fragen oder Problemen stehe ich gerne zur Verfügung.
 
