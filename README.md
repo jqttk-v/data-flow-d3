@@ -4,7 +4,6 @@
 
 Das Datenfluss-Dashboard ist eine fortschrittliche Visualisierungs- und Managementplattform, die umfassende Einblicke in Datenflüsse zwischen Systemen bietet, mit Fokus auf Datenaustauschmustern und -prozessen in der Gasindustrie. Die Plattform ermöglicht es Stakeholdern im gesamten Unternehmen, die komplexen Beziehungen zwischen Systemen, Schnittstellen und Datenformaten zu verstehen, zu analysieren und zu überwachen.
 
-![Datenfluss-Dashboard](https://via.placeholder.com/800x400?text=Datenfluss-Dashboard+Screenshot)
 
 ### Hauptmerkmale
 
