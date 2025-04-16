@@ -257,7 +257,7 @@ Diese Anleitung führt Sie durch alle Schritte, um das Datenfluss-Dashboard loka
 Die virtuelle Umgebung isoliert die Projektabhängigkeiten von Ihrer globalen Python-Installation. Öffnen Sie die Kommandozeile (cmd) oder PowerShell und navigieren Sie zum Backend-Ordner:
 
 ```bash
-cd pfad/zum/projekt/backend
+cd ./virtimo-data-flow-poc/data-flow-backend
 ```
 
 Wenn Sie noch keine virtuelle Umgebung haben, erstellen Sie eine:
