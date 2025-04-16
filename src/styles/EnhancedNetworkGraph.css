@@ -1,0 +1,340 @@
+/* src/styles/EnhancedNetworkGraph.css */
+.enhanced-network-graph-container {
+  width: 100%;
+  height: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  background-color: #ffffff;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.enhanced-network-graph {
+  width: 100%;
+  height: 100%;
+}
+
+/* Node styling */
+.node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.system-node {
+  fill: #ffffff;
+  stroke-width: 2;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.2));
+}
+
+.interface-node {
+  fill: #f8fafc;
+  stroke-width: 2;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.2));
+}
+
+.dataflow-node {
+  fill: currentColor;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* Selection and hover effects */
+.node-group.selected-node .system-node,
+.node-group.selected-node .interface-node,
+.node-group.selected-node .dataflow-node {
+  stroke-width: 3;
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.3));
+}
+
+.node-group.connected-node .system-node,
+.node-group.connected-node .interface-node,
+.node-group.connected-node .dataflow-node {
+  stroke-width: 2.5;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* Link styling */
+.link {
+  transition: all 0.3s ease;
+}
+
+.link.highlighted {
+  filter: drop-shadow(0px 2px 1px rgba(0, 0, 0, 0.3));
+}
+
+.link.system-to-system {
+  stroke-dasharray: 5, 5;
+}
+
+.link.dataflow-to-interface {
+  stroke-dasharray: 3, 3;
+}
+
+.link.interface-to-interface {
+  stroke-dasharray: 1, 1;
+}
+
+/* Animation for flow particles */
+.flow-particle {
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+}
+
+/* Mode-specific styles */
+.enhanced-network-graph-container.overview-mode {
+  height: 700px;
+}
+
+.enhanced-network-graph-container.focused-mode {
+  height: 600px;
+}
+
+.enhanced-network-graph-container.technical-mode {
+  height: 750px;
+}
+
+/* Tooltip style (applied through D3) */
+.tooltip {
+  position: absolute;
+  z-index: 10;
+  visibility: hidden;
+  padding: 10px 14px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  max-width: 300px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #1f2937;
+}
+
+/* Tooltip for technical mode */
+.tooltip-technical {
+  min-width: 220px;
+}
+
+.tooltip-header {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #1f2937;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tooltip-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.tooltip-label {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.tooltip-value {
+  font-weight: 500;
+  color: #1f2937;
+  text-align: right;
+}
+
+.tooltip-footer {
+  font-size: 12px;
+  font-style: italic;
+  color: #9ca3af;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* Standard tooltip */
+.tooltip-standard {
+  padding: 6px;
+}
+
+.tooltip-standard strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.tooltip-subtitle {
+  display: block;
+  color: #6b7280;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.tooltip-hint {
+  display: block;
+  font-style: italic;
+  color: #9ca3af;
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+/* Status indicators in tooltips */
+.status-ok {
+  color: #10b981;
+}
+
+.status-error {
+  color: #ef4444;
+}
+
+.status-warning {
+  color: #f59e0b;
+}
+
+/* Loading indicators */
+.simulation-indicator {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #6b7280;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+
+.no-data-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6b7280;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Technical mode controls */
+.technical-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  width: 200px;
+  z-index: 5;
+}
+
+.technical-controls-header {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #1f2937;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.technical-controls-item {
+  margin-bottom: 10px;
+}
+
+.technical-button {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.technical-button:hover {
+  background-color: #e5e7eb;
+}
+
+/* Focused mode overlay */
+.focused-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #6b7280;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+
+.context-message {
+  font-weight: 500;
+}
+
+/* Level indicators for hierarchical view */
+.level-indicator {
+  font-weight: 600;
+  fill: #64748b;
+  font-size: 14px;
+}
+
+/* Zoom controls */
+.zoom-controls rect {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.zoom-controls rect:hover {
+  fill: #e5e7eb;
+}
+
+.zoom-controls text {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* System header specific styling */
+.system-header-text {
+  font-weight: bold;
+  fill: #FFFFFF;
+  font-size: 12px;
+}
+
+/* Animations for particles */
+@keyframes flow-along-path {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .enhanced-network-graph-container {
+    height: 500px;
+  }
+  
+  .technical-controls {
+    width: 160px;
+    right: 10px;
+    top: 10px;
+    padding: 12px;
+  }
+  
+  .focused-overlay {
+    bottom: 10px;
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

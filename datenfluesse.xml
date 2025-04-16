@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data_flows> <Datenfluss>
+    <Custom_ID>10001</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Eingang MIRA BSI AS4</Name_des_Datenflusses>
+    <Beschreibung>Nominierungseingang BSI AS4</Beschreibung>
+    <Uebertragungsweg>AS4; Webservice</Uebertragungsweg>
+    <Format>NOMINT</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>Marktpartner-System</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>MIRA</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>85</latency>
+      <throughput>645</throughput>
+      <last_executed>2025-04-10T12:30:15Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10002</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Eingangsbestätigung BSI AS4</Name_des_Datenflusses>
+    <Beschreibung>CONTRL Versand wenn NOMINT EDIFACT</Beschreibung>
+    <Uebertragungsweg>Webservice; AS4</Uebertragungsweg>
+    <Format>CONTRL</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>65</latency>
+      <throughput>760</throughput>
+      <last_executed>2025-04-10T12:35:22Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10003</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Fehlerrückmeldung BSI AS4</Name_des_Datenflusses>
+    <Beschreibung>APERAK Versand wenn NOMINT EDIFACT &amp; syntaktisch nicht korrekt</Beschreibung>
+    <Uebertragungsweg>Webservice; AS4</Uebertragungsweg>
+    <Format>APERAK</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>72</latency>
+      <throughput>125</throughput>
+      <last_executed>2025-04-10T11:45:36Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10004</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Negative Servicenachricht BSI AS4</Name_des_Datenflusses>
+    <Beschreibung>negative Bearbeitungsbestätigung (ACKNOW) wenn NOMINT XML</Beschreibung>
+    <Uebertragungsweg>Webservice; AS4</Uebertragungsweg>
+    <Format>ACKNOW</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>error</status>
+      <latency>120</latency>
+      <throughput>80</throughput>
+      <last_executed>2025-04-10T10:12:48Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10005</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Positive Servicenachricht BSI AS4</Name_des_Datenflusses>
+    <Beschreibung>positive Bearbeitungsbestätigung (ACKNOW) wenn NOMINT XML</Beschreibung>
+    <Uebertragungsweg>Webservice; AS4</Uebertragungsweg>
+    <Format>ACKNOW</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>68</latency>
+      <throughput>542</throughput>
+      <last_executed>2025-04-10T13:20:05Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10006</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Nominierungsbestätigung BSI AS4</Name_des_Datenflusses>
+    <Beschreibung>NOMRES Versand wenn Nominierungsregel Biogas eingehalten, beide BK gleiche Gasqualität &amp; Matching durchgeführt</Beschreibung>
+    <Uebertragungsweg>Webservice; AS4</Uebertragungsweg>
+    <Format>NOMRES</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>75</latency>
+      <throughput>498</throughput>
+      <last_executed>2025-04-10T14:05:30Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10007</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Allokation BSI AS4</Name_des_Datenflusses>
+    <Beschreibung>ALOCAT Versand, Übermittlung von Allokationsdaten</Beschreibung>
+    <Uebertragungsweg>Webservice; AS4</Uebertragungsweg>
+    <Format>ALOCAT</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-VICOS-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>92</latency>
+      <throughput>320</throughput>
+      <last_executed>2025-04-10T15:40:22Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10011</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Eingang MIRA SMTP Mail</Name_des_Datenflusses>
+    <Beschreibung>Nominierungseingang SMTP Mail</Beschreibung>
+    <Uebertragungsweg>SMTP; Webservice</Uebertragungsweg>
+    <Format>NOMINT</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>Marktpartner-System</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>MIRA</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung SMTP Mail</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>110</latency>
+      <throughput>215</throughput>
+      <last_executed>2025-04-10T09:25:12Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10012</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Eingangsbestätigung SMTP Mail</Name_des_Datenflusses>
+    <Beschreibung>CONTRL Versand wenn NOMINT EDIFACT</Beschreibung>
+    <Uebertragungsweg>Webservice; SMTP</Uebertragungsweg>
+    <Format>CONTRL</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung SMTP Mail</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>130</latency>
+      <throughput>198</throughput>
+      <last_executed>2025-04-10T09:30:45Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10013</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Fehlerrückmeldung SMTP Mail</Name_des_Datenflusses>
+    <Beschreibung>APERAK Versand wenn NOMINT EDIFACT &amp; syntaktisch nicht korrekt</Beschreibung>
+    <Uebertragungsweg>Webservice; SMTP</Uebertragungsweg>
+    <Format>APERAK</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung SMTP Mail</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>148</latency>
+      <throughput>65</throughput>
+      <last_executed>2025-04-09T16:12:38Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10014</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Negative Servicenachricht SMTP Mail</Name_des_Datenflusses>
+    <Beschreibung>negative Bearbeitungsbestätigung (ACKNOW) wenn NOMINT XML</Beschreibung>
+    <Uebertragungsweg>Webservice; SMTP</Uebertragungsweg>
+    <Format>ACKNOW</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung SMTP Mail</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>error</status>
+      <latency>180</latency>
+      <throughput>43</throughput>
+      <last_executed>2025-04-09T14:45:09Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10015</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Positive Servicenachricht SMTP Mail</Name_des_Datenflusses>
+    <Beschreibung>positive Bearbeitungsbestätigung (ACKNOW) wenn NOMINT XML</Beschreibung>
+    <Uebertragungsweg>Webservice; SMTP</Uebertragungsweg>
+    <Format>ACKNOW</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung SMTP Mail</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>115</latency>
+      <throughput>185</throughput>
+      <last_executed>2025-04-10T08:55:18Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10016</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Nominierungsbestätigung SMTP Mail</Name_des_Datenflusses>
+    <Beschreibung>NOMRES Versand wenn Nominierungsregel Biogas eingehalten, beide BK gleiche Gasqualität &amp; Matching durchgeführt</Beschreibung>
+    <Uebertragungsweg>Webservice; SMTP</Uebertragungsweg>
+    <Format>NOMRES</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung SMTP Mail</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>125</latency>
+      <throughput>175</throughput>
+      <last_executed>2025-04-10T11:30:42Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10017</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Allokation SMTP Mail</Name_des_Datenflusses>
+    <Beschreibung>ALOCAT Versand, Übermittlung von Allokationsdaten</Beschreibung>
+    <Uebertragungsweg>Webservice; SMTP</Uebertragungsweg>
+    <Format>ALOCAT</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MailServer-Nominierung</Schnittstelle>
+        <position>3</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-Nominierung SMTP Mail</Schnittstelle>
+        <position>4</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>140</latency>
+      <throughput>168</throughput>
+      <last_executed>2025-04-10T13:15:08Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10021</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Eingang MIRA via VHP-Portal</Name_des_Datenflusses>
+    <Beschreibung>Nominierungseingang via VHP-Portal</Beschreibung>
+    <Uebertragungsweg>Webservice</Uebertragungsweg>
+    <Format>NOMINT</Format>
+    <Ausloser>Manuell</Ausloser>
+    <QuelleSystem>
+      <n>VHP-Portal</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>MIRA</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-VHP-Portal-Interface</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MIRA-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>62</latency>
+      <throughput>95</throughput>
+      <last_executed>2025-04-10T10:10:33Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10031</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Eingang MIRA AS2</Name_des_Datenflusses>
+    <Beschreibung>Nominierungseingang AS2</Beschreibung>
+    <Uebertragungsweg>AS2</Uebertragungsweg>
+    <Format>NOMINT</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>Marktpartner-System</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>MIRA</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-AS2</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MIRA-AS2</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>88</latency>
+      <throughput>285</throughput>
+      <last_executed>2025-04-10T07:45:51Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10032</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Eingangsbestätigung AS2</Name_des_Datenflusses>
+    <Beschreibung>CONTRL Versand wenn NOMINT EDIFACT</Beschreibung>
+    <Uebertragungsweg>AS2</Uebertragungsweg>
+    <Format>CONTRL</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-AS2</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-AS2</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>90</latency>
+      <throughput>270</throughput>
+      <last_executed>2025-04-10T07:50:22Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10033</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Fehlerrückmeldung AS2</Name_des_Datenflusses>
+    <Beschreibung>APERAK Versand wenn NOMINT EDIFACT &amp; syntaktisch nicht korrekt</Beschreibung>
+    <Uebertragungsweg>AS2</Uebertragungsweg>
+    <Format>APERAK</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-AS2</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-AS2</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>95</latency>
+      <throughput>48</throughput>
+      <last_executed>2025-04-09T15:32:19Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10034</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Negative Servicenachricht AS2</Name_des_Datenflusses>
+    <Beschreibung>negative Bearbeitungsbestätigung (ACKNOW) wenn NOMINT XML</Beschreibung>
+    <Uebertragungsweg>AS2</Uebertragungsweg>
+    <Format>ACKNOW</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-AS2</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-AS2</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>95</latency>
+      <throughput>35</throughput>
+      <last_executed>2025-04-09T12:18:41Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10035</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Positive Servicenachricht AS2</Name_des_Datenflusses>
+    <Beschreibung>positive Bearbeitungsbestätigung (ACKNOW) wenn NOMINT XML</Beschreibung>
+    <Uebertragungsweg>AS2</Uebertragungsweg>
+    <Format>ACKNOW</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-AS2</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-AS2</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>85</latency>
+      <throughput>250</throughput>
+      <last_executed>2025-04-10T08:25:37Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10036</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Nominierungsbestätigung AS2</Name_des_Datenflusses>
+    <Beschreibung>NOMRES Versand wenn Nominierungsregel Biogas eingehalten, beide BK gleiche Gasqualität &amp; Matching durchgeführt</Beschreibung>
+    <Uebertragungsweg>AS2</Uebertragungsweg>
+    <Format>NOMRES</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-AS2</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-AS2</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>92</latency>
+      <throughput>220</throughput>
+      <last_executed>2025-04-10T09:05:14Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10037</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung Allokation AS2</Name_des_Datenflusses>
+    <Beschreibung>ALOCAT Versand, Übermittlung von Allokationsdaten</Beschreibung>
+    <Uebertragungsweg>AS2</Uebertragungsweg>
+    <Format>ALOCAT</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>Marktpartner-System</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-AS2</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-Marktpartner-AS2</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>98</latency>
+      <throughput>190</throughput>
+      <last_executed>2025-04-10T11:40:26Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10051</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung MIRA ---&gt; GasXGrid</Name_des_Datenflusses>
+    <Beschreibung>Übergabe NOMINT MIRA ---&gt; GasXGrid</Beschreibung>
+    <Uebertragungsweg>Webservice</Uebertragungsweg>
+    <Format>NOMINT</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>MIRA</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>GAS-X-GRID</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-MIRA-GasXGrid</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-GasXGrid-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>58</latency>
+      <throughput>550</throughput>
+      <last_executed>2025-04-10T14:15:02Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10052</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung GasXGrid ---&gt; MIRA</Name_des_Datenflusses>
+    <Beschreibung>Übergabe  GasXGrid ---&gt; MIRA</Beschreibung>
+    <Uebertragungsweg>Webservice</Uebertragungsweg>
+    <Format>NOMRES</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>GAS-X-GRID</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>MIRA</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-GasXGrid-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MIRA-GasXGrid</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>60</latency>
+      <throughput>520</throughput>
+      <last_executed>2025-04-10T14:20:18Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10053</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung GasXGrid ---&gt; GasXBKN</Name_des_Datenflusses>
+    <Beschreibung>Übergabe GasXGrid ---&gt; GasXBKN Export Nominierungsbestätigung, nach Matching &amp; wenn Gastag beendet</Beschreibung>
+    <Uebertragungsweg>Webservice</Uebertragungsweg>
+    <Format>NOMRES</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>GAS-X-GRID</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>GAS-X-BKN</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-GasXGrid-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-GasXBKN-Nominierung</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>52</latency>
+      <throughput>480</throughput>
+      <last_executed>2025-04-10T14:45:39Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+  <Datenfluss>
+    <Custom_ID>10054</Custom_ID>
+    <Name_des_Datenflusses>VHP-Nominierung GasXBKN ---&gt; MIRA</Name_des_Datenflusses>
+    <Beschreibung>Übergabe Allokationsdaten GasXBKN ---&gt; MIRA</Beschreibung>
+    <Uebertragungsweg>Webservice</Uebertragungsweg>
+    <Format>ALOCAT</Format>
+    <Ausloser>Ereignisgesteuert</Ausloser>
+    <QuelleSystem>
+      <n>GAS-X-BKN</n>
+    </QuelleSystem>
+    <Zielsystem>
+      <n>MIRA</n>
+    </Zielsystem>
+    <Prozessschritte>
+      <Prozessschritt>
+        <Schritttyp>delivery</Schritttyp>
+        <Schnittstelle>SST-GasXBKN-Nominierung</Schnittstelle>
+        <position>1</position> </Prozessschritt>
+      <Prozessschritt>
+        <Schritttyp>reception</Schritttyp>
+        <Schnittstelle>SST-MIRA-GasXGrid</Schnittstelle>
+        <position>2</position> </Prozessschritt>
+    </Prozessschritte>
+    <technical_metadata> <status>operational</status>
+      <latency>65</latency>
+      <throughput>430</throughput>
+      <last_executed>2025-04-10T15:10:57Z</last_executed>
+    </technical_metadata>
+  </Datenfluss>
+</data_flows>
+

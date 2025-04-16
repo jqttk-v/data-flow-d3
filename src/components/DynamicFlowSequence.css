@@ -1,0 +1,209 @@
+/* src/styles/DynamicFlowSequence.css */
+.dynamic-flow-sequence {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.flow-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f8fafc;
+  border: 2px solid #e5e7eb;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s ease;
+  color: #4b5563;
+}
+
+.play-button:hover {
+  background-color: #f1f5f9;
+  transform: scale(1.05);
+}
+
+.play-button.play {
+  color: #10b981;
+}
+
+.play-button.pause {
+  color: #6b7280;
+}
+
+.flow-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.flow-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.flow-format {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 16px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  align-self: flex-start;
+}
+
+.flow-visualization {
+  width: 100%;
+  min-height: 480px;
+  display: flex;
+  
+  /* Je nachdem, ob du das Zentrieren brauchst, anpassen: */
+  /* align-items: center;  // kann zu Abschnitten führen, wenn zu wenig Platz ist */
+  align-items: flex-start;
+  
+  justify-content: center; /* Oder flex-start, falls das besser passt */
+  margin-top: 20px;
+  
+  /* Hauptverursacher für Abgeschnittenes entfernen oder ändern: */
+  overflow: visible; 
+  /* overflow: auto; // wenn du Scrollbars haben möchtest */
+}
+
+
+.flow-visualization svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.flow-details {
+  padding: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.flow-path-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.path-start, .path-end {
+  padding: 6px 12px;
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.path-arrow {
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+.path-step {
+  padding: 6px 12px;
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.path-step.completed {
+  background-color: #d1fae5;
+  color: #065f46;
+  font-weight: 500;
+}
+
+.flow-description {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* Animation effects */
+@keyframes flow-particle {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -30;
+  }
+}
+
+.flow-path {
+  stroke-dasharray: 5, 5;
+  animation: flow-particle 1s linear infinite;
+}
+
+/* Support for different flow path states */
+.flow-path.active {
+  stroke-width: 3;
+  stroke-dasharray: none;
+}
+
+.flow-path.completed {
+  stroke: #10b981;
+}
+
+.flow-path.pending {
+  stroke-dasharray: 5, 5;
+  opacity: 0.6;
+}
+
+/* No flow selected state */
+.no-flow-selected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: #9ca3af;
+  font-size: 16px;
+  font-style: italic;
+  background-color: #f8fafc;
+  border-radius: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .flow-path-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .path-arrow {
+    display: none;
+  }
+  
+  .flow-visualization {
+    min-height: 300px;
+    padding: 10px;
+  }
+}
